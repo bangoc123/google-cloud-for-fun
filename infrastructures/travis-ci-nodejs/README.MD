@@ -1,0 +1,83 @@
+### Nodejs App Auto-deployment with Travis CI in Google Cloud
+
+Hey Ngoc here!!!
+
+[Continuous Integration](https://www.thoughtworks.com/continuous-integration) has been becoming an important aspect in software development. The fundamental idea came from the needs of speed and convinence in deployment. 
+
+With the help of some automatic tools such as [Jenkin](https://jenkins.io/), [CircleCI](https://circleci.com/) or 
+[Travis](https://travis-ci.org/), developers are able to save a plenty of time and more importantly reduce the incidents in deploying their applications.
+
+Why did I choose **Travis** for this project?
+
+In fact, I have been using **CircleCI** for 2 years and **Jenkin** for 3 years, yet the reason for choosing [Travis] because it's **CircleCI** combined with **Jenkin**. Interestingly, It inherited some cool features like pretty user-friendly dashboard, good speed :) from **CircleCI** and it's free like **Jenkin**. How awesome it is!!!!
+
+Why did I decide to make a demonstration of **Nodejs** instead of using Python or Ruby?
+
+The simple castalys for using Nodejs is a small number of Docs related to applying CI/CD with Nodejs in Google Cloud. Additionally, I have been a Nodejs developer for more than 3 years. :D
+
+#### 1. Setup Nodejs App
+
+##### a. Initialize a Nodejs project
+
+Type this command to initialize Nodejs Projec ```npm install```
+
+<img src="https://lh3.googleusercontent.com/urg-mS_kp74U8hhMkKvvb8NRjyAwhRH1nAGlVdwsZinNV-KPThVN1TsVK69ylALKeILT7ymFKxDvn23eTLhmTaF7gn7hnm6tfIvC399fMKeTdXNy6mfkgEE2AKyzgIc7aIgTVob_yBo_4hUQyVffDiGxYVrG18r3yofHh1YGEZP_VoLwWRxPhMCovo0vjbx-WRGDOhbHKrwMu7RdnydstqZPRAr7b3NS82A71-1sfPZYwodEPEWSYWuJkrpt-610NulSpuJiWLvyxw_lxprE1kgYIaekUC977LTXqpM1pi-4ity8fBXTYhK3MwmJbE_a0yCz7omHWdJoibHj0dvb_aBUIL3vFtfG1cXJhN2PmEIQ6TaXHcJ5mPLmvzJkM4ZPbRwciJoMoC7ODUQ0qovpswNoVLVy7WAy1Quw1c4_iREOgsIHmlt79Wcuh8mEgVceBGx8q8quxgg2zyN2Gwd24TfpyirTqnHyW83ojpVCmwG5eXsxiOl3E4UOalAvAdgsyuTD0G3iTi4zNtenJaOFDw14E2sLHTrDZTadYtRtxXu_IKQz_Y2_cIz97-YNmLlb1E2SQ2s86Xr2gCNmSV0RHup4y_BMeydvw2n6PO13AJGAaItBBz4XHbMEBMUnmJLyI9vU9MUGcMBdQQdUXTButd8eOcHlFSORfHXVIG84IaQHju_KxSmZhwGrAREHCk60tECX04X_Nk5SGQUCsj4InASX=w1306-h902-no" width=500>
+
+We notice that a package.json is created instantly in your project.
+
+<img src="https://lh3.googleusercontent.com/-Kz4QTbF9AXur3ZE7lPds7YOAszT4Qw8I3-orAGKeWwQWAdaJ6ujxnTxUSmOLmneb9lwUNLbWuIVxG3OfYjRWoqC8A-3BRUuhbgGiZNu_4XVJPlidJvu6f-OpR8NWnlAd3cyzQB0J3EB5Sq4VB0mjw2WDI9P0RnscmbAo-hyK9fdcz1qkfvLdUVq01vTE9R4gnA8hvOAb9Oh2ErBmf9BHjsETp-nfSdUmQOl9SOF823V3DdZr6wpl_tuFBjY0w5wBCgogXiugI3BigNVAlfJN3SH6UU3qIlCj-Mk9rXvL2OdCY6vE35UrjArLol2wwkMzVwgTnO5URmBx-TbnWkzayH-iown3DmMCJsHhQS9pALzhjFJF-ClsRRZtuzH-7h72N-vN5oaDPSeLhbw4kPM9c8tu-xOuh81EUwg_QdIg3aaPKzKkleKNYUg0BNscOinTrGTReF5svWRVPwq_kZcLDGpeUFQK48c2L9Q5pqg-1cTV8keax-2pQG6bEW0IVAkpV7YitSuitZcJDttaCCQHlobhZQL-LWrd-ZV3hMCqQkXWGFkImh0ltt0owNNHzchrY3hpV5u4aS9GG3rn4oDGMxE5wN4yOwepJoTU4ljfU-FK41D6od_uU52ijGQbNwxlrs7Awd1Wwr5t6_AxYqXDBQjjZQbjIQJpIYKfAYAKaUfep75XMJrx4TElSHKL2IOtC6IvsIVDyqyYe9z6akYUUER=w1834-h1016-no" width=500>
+
+##### b. Install dependencies
+
+We install two things:
+
+- [Express](https://expressjs.com/) - Web framework for Node.js
+- [EJS](https://ejs.co/) - Embedded JavaScript templating.
+
+<img src="https://lh3.googleusercontent.com/60qu6QKJGPPGnZX24AtNmM1Y2xb6_9dgTc3hA1hEaGWbMgii7JEQ9zUTegX22RlHb8DxZoIy4rHkgTQGoC-mM8ekbg7Zga0Ol_xHwbbrpyFSxLB9BFj_CQfcQAoRuHXY4v1vMtsH2hVSWcYGw6xh1pAE1IyniZG_fqTsnC6RonpuljZOQuzBryVnC1gZT9ZpF4GwTSWBv1A6TN1OM2Kr4EZOYYDaB9YvCSh6zcDRQLiEWp0EX-eDGsoK6HCL2to6ZyGKz4070QnnvhBWukMOYqDldHbgRBtlw9dwfYXkPcjYSyWZvAwUpebeHQLALcQLfEoviPNRArKys2AYyLZ98rAaR3pir6IrR2U7PEB0c3HwuPsNxQFahNNAP_ptqxRSq84_A4pWN1loeXslKcrRIJSn7DZ2nPv2UiIo4iFQf7Ljhn8ociWPxuQJtOrtFZCFVMK7tGLYP7nRpiI6zrbFDZaxrei8-n4sk_H50mERqkO6xVSb-eGx67K7-_xdQvc0S3Mg5W1BrJuJrt1fc3c6fNxCPUZAwvYa6pYjaaN31bQuLBQBetpl7ooNH9czq-b4gSXNAj_lly5HvM6KOQe_izXyBySgN7i5hXbvxKvR27g3GQjqVpEwTNmpXbzOr8p-o37hd3Faudy2lvHoc6tjBbQaoeMXNVp9D6y7uneqUkgJ71hIn_oBAoAe6YMSZiL92Y_-YYhb9hcMkj89mvHiWYco=w1304-h596-no" width=500>
+
+##### c. Implement app.js
+
+Of course we need a function to start sever and serve some basic requests. 
+
+We create an ```app.js``` file and add some simple lines of codes.
+
+```
+'use strict';
+
+const express = require('express');
+const app = express();
+
+app.set('view engine', 'ejs');
+
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
+// Start the server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+  console.log('Press Ctrl+C to quit.');
+});
+
+```
+
+We will return a html page when the server receives a HTTP request from an client.
+
+Although we set up to use port **8080** locally but when deploying these codes, App Engine is able to recognize it and change to suitable port such as **80** for http and **443** for https.
+
+Subsequently, we add a folder called views contains a ejs file `index.ejs`.
+
+<img src="./guide-images/nodejs-views.png" width=500>
+
+Start app and enjoy!!!
+
+<img src="./guide-images/start-app.png" width=500>
+
+<img src="./guide-images/index-page.png" width=500>
+
+Next episode will be published on 10th April 2019.
+
+
+
