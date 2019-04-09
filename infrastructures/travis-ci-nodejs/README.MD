@@ -158,11 +158,22 @@ Travis will list all your respositories.
 Note that: Two things required to integrate your repo to Travis
 
 - You **own** this repository, meaning that if you are only the collborator, you can not link the travis to your project. In this case, you need to ask the owner to help you enable it.
-- An .travis.yml file must be added to your repo. :)
+- An .travis.yml file **has been added already** to your repo in **root folder**. :)
+
+<img src="./guide-images/travis-location.png" width=500>
 
 
+You can see the screen like this on Travis Dashboard:
 
+<img src="./guide-images/travis-dashboard.png" width=500>
 
+Travis only is triggered when a commit is pushed to Github. At the first time, you may not see any log/buid yet.
+
+You can check whether the Travis is triggered or not at tab **Pull History**
+
+<img src="./guide-images/travis-pull-history.png" width=500>
+
+In case you don't see anything updated, please try to create a **test commit** and push it to Github. :)
 
 
 
