@@ -15,9 +15,17 @@ Why did I decide to make a demonstration of **Nodejs** instead of using Python o
 
 The simple castalys for using Nodejs is a small number of Docs related to applying CI/CD with Nodejs in Google Cloud. Additionally, I have been a Nodejs developer for more than 3 years. :D
 
-### 0. Tutorial Outline
+### Tutorial Outline
+- 0. [Before you begin](#0-before-you-begin)
 - 1. [Setup Nodejs App](#1-setup-nodejs-app)
 - 2. [Setup App Engine](#2-setup-app-engine)
+- 3. [Enable neccessary apis](#3-enable-neccessary-apis)
+- 4. [Integrate Github with Cloud Shell](#4-integrate-github-with-cloud-shell)
+- 5. [Integrate Travis with Github Repository](#5-integrate-travis-with-github-repository)
+
+### 0. Before you begin
+
+Please create two accounts [Travis](https://travis-ci.com/) and [Github](https://github.com/) if you haven't had yet.
 
 ### 1. Setup Nodejs App
 
@@ -110,6 +118,59 @@ You can select your particular region. I chose **us-central**
 **Finish app creation**
 
 <img src="./guide-images/create-app-engine-5.png" width=500>
+
+#### 3. Enable neccessary apis
+
+Click here to [Enable essential apis](https://console.cloud.google.com/flows/enableapi?apiid=compute,books,appengine)
+
+It consists of **Computer Engine**, **Google Books** and **App Engine APIs**.
+
+<img src="./guide-images/enable-api.png" width=500>
+
+It takes around 2-3 minutes to finish this progress.
+
+Done!!!
+
+<img src="./guide-images/enable-api-2.png" width=500>
+
+#### 4. Integrate Github with Cloud Shell
+
+##### 4.1 Go to [Cloud Shell](https://console.cloud.google.com/cloudshell/)
+You can imagine that Cloud Shell is simply a terminal in browser. You can use it as **PowerShell** in Windows or **Terminal** in Mac.
+
+##### 4.2 [Generate SSH Key in Cloud Shell](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+
+##### 4.3 [Add SSH Key to your Github Account](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account#platform-linux)
+
+##### 4.4 [Verify the link between Github and Cloud Shell works well](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account#platform-linux)
+
+##### 4.5 Clone your app from Github to Cloud Shell
+
+<img src="./guide-images/clone-the-project-to-cloud-shell.png">
+
+#### 5. Integrate Travis with Github Repository
+
+On **[Travis](https://travis-ci.com/)**, log in by your Github account.
+
+Travis will list all your respositories. 
+
+Note that: Two things required to integrate your repo to Travis
+
+- You **own** this repository, meaning that if you are only the collborator, you can not link the travis to your project.
+- An .travis.yml file must be added to your repo. :)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
