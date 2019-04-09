@@ -1,4 +1,4 @@
-### Nodejs App Auto-deployment with Travis CI in Google Cloud
+## Nodejs App Auto-deployment with Travis CI in Google Cloud
 
 Hey Ngoc here!!!
 
@@ -15,9 +15,13 @@ Why did I decide to make a demonstration of **Nodejs** instead of using Python o
 
 The simple castalys for using Nodejs is a small number of Docs related to applying CI/CD with Nodejs in Google Cloud. Additionally, I have been a Nodejs developer for more than 3 years. :D
 
-#### 1. Setup Nodejs App
+### 0. Tutorial Outline
+- 1. [Setup Nodejs App](#1-setup-nodejs-app)
+- 2. [Setup App Engine](#2-setup-app-engine)
 
-##### a. Initialize a Nodejs project
+### 1. Setup Nodejs App
+
+#### 1.1 Initialize a Nodejs project
 
 Type this command to initialize Nodejs Projec ```npm install```
 
@@ -27,7 +31,7 @@ We notice that a package.json is created instantly in your project.
 
 <img src="https://lh3.googleusercontent.com/-Kz4QTbF9AXur3ZE7lPds7YOAszT4Qw8I3-orAGKeWwQWAdaJ6ujxnTxUSmOLmneb9lwUNLbWuIVxG3OfYjRWoqC8A-3BRUuhbgGiZNu_4XVJPlidJvu6f-OpR8NWnlAd3cyzQB0J3EB5Sq4VB0mjw2WDI9P0RnscmbAo-hyK9fdcz1qkfvLdUVq01vTE9R4gnA8hvOAb9Oh2ErBmf9BHjsETp-nfSdUmQOl9SOF823V3DdZr6wpl_tuFBjY0w5wBCgogXiugI3BigNVAlfJN3SH6UU3qIlCj-Mk9rXvL2OdCY6vE35UrjArLol2wwkMzVwgTnO5URmBx-TbnWkzayH-iown3DmMCJsHhQS9pALzhjFJF-ClsRRZtuzH-7h72N-vN5oaDPSeLhbw4kPM9c8tu-xOuh81EUwg_QdIg3aaPKzKkleKNYUg0BNscOinTrGTReF5svWRVPwq_kZcLDGpeUFQK48c2L9Q5pqg-1cTV8keax-2pQG6bEW0IVAkpV7YitSuitZcJDttaCCQHlobhZQL-LWrd-ZV3hMCqQkXWGFkImh0ltt0owNNHzchrY3hpV5u4aS9GG3rn4oDGMxE5wN4yOwepJoTU4ljfU-FK41D6od_uU52ijGQbNwxlrs7Awd1Wwr5t6_AxYqXDBQjjZQbjIQJpIYKfAYAKaUfep75XMJrx4TElSHKL2IOtC6IvsIVDyqyYe9z6akYUUER=w1834-h1016-no" width=500>
 
-##### b. Install dependencies
+#### 1.2 Install dependencies
 
 We install two things:
 
@@ -36,7 +40,7 @@ We install two things:
 
 <img src="https://lh3.googleusercontent.com/60qu6QKJGPPGnZX24AtNmM1Y2xb6_9dgTc3hA1hEaGWbMgii7JEQ9zUTegX22RlHb8DxZoIy4rHkgTQGoC-mM8ekbg7Zga0Ol_xHwbbrpyFSxLB9BFj_CQfcQAoRuHXY4v1vMtsH2hVSWcYGw6xh1pAE1IyniZG_fqTsnC6RonpuljZOQuzBryVnC1gZT9ZpF4GwTSWBv1A6TN1OM2Kr4EZOYYDaB9YvCSh6zcDRQLiEWp0EX-eDGsoK6HCL2to6ZyGKz4070QnnvhBWukMOYqDldHbgRBtlw9dwfYXkPcjYSyWZvAwUpebeHQLALcQLfEoviPNRArKys2AYyLZ98rAaR3pir6IrR2U7PEB0c3HwuPsNxQFahNNAP_ptqxRSq84_A4pWN1loeXslKcrRIJSn7DZ2nPv2UiIo4iFQf7Ljhn8ociWPxuQJtOrtFZCFVMK7tGLYP7nRpiI6zrbFDZaxrei8-n4sk_H50mERqkO6xVSb-eGx67K7-_xdQvc0S3Mg5W1BrJuJrt1fc3c6fNxCPUZAwvYa6pYjaaN31bQuLBQBetpl7ooNH9czq-b4gSXNAj_lly5HvM6KOQe_izXyBySgN7i5hXbvxKvR27g3GQjqVpEwTNmpXbzOr8p-o37hd3Faudy2lvHoc6tjBbQaoeMXNVp9D6y7uneqUkgJ71hIn_oBAoAe6YMSZiL92Y_-YYhb9hcMkj89mvHiWYco=w1304-h596-no" width=500>
 
-##### c. Implement app.js
+#### 1.3 Implement app.js
 
 Of course we need a function to start sever and serve some basic requests. 
 
@@ -77,7 +81,36 @@ Start app and enjoy!!!
 
 <img src="./guide-images/index-page.png" width=500>
 
-Next episode will be published on 10th April 2019.
+### 2. Setup App Engine
+
+#### 2.1 Access [Google Cloud](https://console.cloud.google.com)
+#### 2.2 Create a new project
+
+<img src="./guide-images/create-app-engine.png" width=500>
+
+Name this project. I gave my project name as "Travis-nodejs" 
+
+
+<img src="./guide-images/travis-nodejs.png" width=500>
+
+#### 2.3 Create App Engine Application
+
+Go **Menus > App Engine > Dashboard > Create Application**
+
+<img src="./guide-images/creat-app-engine-2.png" width=500>
+
+You can select your particular region. I chose **us-central**
+
+<img src="./guide-images/create-app-engine-3.png" width=500>
+
+**Create app** -> **Select Language**. I selected Nodejs.
+
+<img src="./guide-images/create-app-engine-4.png" width=500>
+
+**Finish app creation**
+
+<img src="./guide-images/create-app-engine-5.png" width=500>
+
 
 
 
