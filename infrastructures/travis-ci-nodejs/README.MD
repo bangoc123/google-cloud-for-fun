@@ -119,7 +119,7 @@ You can select your particular region. I chose **us-central**
 
 <img src="./guide-images/create-app-engine-5.png" width=500>
 
-#### 3. Enable neccessary apis
+### 3. Enable neccessary apis
 
 Click here to [Enable essential apis](https://console.cloud.google.com/flows/enableapi?apiid=compute,books,appengine)
 
@@ -133,23 +133,23 @@ Done!!!
 
 <img src="./guide-images/enable-api-2.png" width=500>
 
-#### 4. Integrate Github with Cloud Shell
+### 4. Integrate Github with Cloud Shell
 
-##### 4.1 Go to [Cloud Shell](https://console.cloud.google.com/cloudshell/)
+#### 4.1 Go to [Cloud Shell](https://console.cloud.google.com/cloudshell/)
 You can imagine that Cloud Shell is simply a terminal in browser. You can use it as **PowerShell** in Windows or **Terminal** in Mac.
 
-##### 4.2 [Generate SSH Key in Cloud Shell](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+#### 4.2 [Generate SSH Key in Cloud Shell](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
 
-##### 4.3 [Add SSH Key to your Github Account](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account#platform-linux)
+#### 4.3 [Add SSH Key to your Github Account](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account#platform-linux)
 
-##### 4.4 [Verify the link between Github and Cloud Shell works well](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account#platform-linux)
+#### 4.4 [Verify the link between Github and Cloud Shell works well](https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account#platform-linux)
 
-##### 4.5 Clone your app from Github to Cloud Shell
+#### 4.5 Clone your app from Github to Cloud Shell
 
-<img src="./guide-images/clone-the-project-to-cloud-shell.png">
+<img src="./guide-images/clone-the-project-to-cloud-shell.png" width=500>
 
-#### 5. Integrate Travis with Github Repository
+### 5. Integrate Travis with Github Repository
 
 On **[Travis](https://travis-ci.com/)**, log in by your Github account.
 
@@ -157,7 +157,7 @@ Travis will list all your respositories.
 
 Note that: Two things required to integrate your repo to Travis
 
-- You **own** this repository, meaning that if you are only the collborator, you can not link the travis to your project.
+- You **own** this repository, meaning that if you are only the collborator, you can not link the travis to your project. In this case, you need to ask the owner to help you enable it.
 - An .travis.yml file must be added to your repo. :)
 
 
