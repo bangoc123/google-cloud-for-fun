@@ -158,7 +158,7 @@ Travis will list all your respositories.
 Note that: Two things required to integrate your repo to Travis
 
 - You **own** this repository, meaning that if you are only the collaborator, you can not link the travis to your project. In this case, you need to ask the owner to help you enable it.
-- An .travis.yml file **has been added already** to your repo in **root folder**. :)
+- An .travis.yml file **has been added already** to your repo in **root folder**. :). Copy all content of .travis.yml [here](https://github.com/bangoc123/google-cloud-for-fun/blob/master/.travis.yml).
 
 <img src="./guide-images/travis-location.png" width=500>
 
@@ -237,7 +237,7 @@ Upload to Cloud Shell by using **Upload File** features.
   cd ~/google-cloud-for-fun/infrastructures/travis-ci-nodejs
   echo "key = '${API_KEY}'" > api_key.py
   ```
-  <img src="./guide-images/service-account-7.png" width=400>
+  <img src="./guide-images/service-account-7.png" width=600>
 
 #### 6.5 Encrypt credentials for Travis
 
@@ -253,7 +253,7 @@ Upload to Cloud Shell by using **Upload File** features.
   ```
   You will use the Github Account to login into **Travis**
 
-  <img src="./guide-images/travis-login.png" width=400>
+  <img src="./guide-images/travis-login.png" width=600>
   
 - We need to encrypt this file for public usage
 
@@ -262,8 +262,33 @@ Upload to Cloud Shell by using **Upload File** features.
   travis encrypt-file credentials.tar.gz --pro
   ```
   
-  <img src="./guide-images/encrypt-credentials.png" width=400>
+  <img src="./guide-images/encrypt-credentials.png" width=600>
 
+#### 6.5 Update Travis file
+
+- Replace text **DECRYPT_COMMAND** in .travis.yml by the text begining with **openssl aes...** in Cloud Shell.
+  ```
+  sed -i 's/DECRYPT_COMMAND/[YOUR_COMMAND_OUTPUT]/g' .travis.yml
+  ```
+
+  <img src="./guide-images/travis-encrypt.png" width=600>
+  
+- Replace text **travis-nodejs** in .travis.yml by your project ID in Cloud Shell.
+
+  ```
+  sed -i "s/travis-nodejs/${DEVSHELL_PROJECT_ID}/g" .travis.yml
+  ```
+
+  <img src="./guide-images/project-id.png" width=400>
+
+- Push changes to Github
+
+  ```
+  git add credentials.tar.gz.enc .travis.yml
+  git commit -m "Adds encrypted credentials for Travis and updates project name"
+  ```
+
+  
 
 
 
