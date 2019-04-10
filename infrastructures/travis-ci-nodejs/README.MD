@@ -31,7 +31,7 @@ Please create two accounts [Travis](https://travis-ci.com/) and [Github](https:/
 
 #### 1.1 Initialize a Nodejs project
 
-Type this command to initialize Nodejs Projec ```npm install```
+Type this command to initialize Nodejs Project ```npm install```
 
 <img src="https://lh3.googleusercontent.com/urg-mS_kp74U8hhMkKvvb8NRjyAwhRH1nAGlVdwsZinNV-KPThVN1TsVK69ylALKeILT7ymFKxDvn23eTLhmTaF7gn7hnm6tfIvC399fMKeTdXNy6mfkgEE2AKyzgIc7aIgTVob_yBo_4hUQyVffDiGxYVrG18r3yofHh1YGEZP_VoLwWRxPhMCovo0vjbx-WRGDOhbHKrwMu7RdnydstqZPRAr7b3NS82A71-1sfPZYwodEPEWSYWuJkrpt-610NulSpuJiWLvyxw_lxprE1kgYIaekUC977LTXqpM1pi-4ity8fBXTYhK3MwmJbE_a0yCz7omHWdJoibHj0dvb_aBUIL3vFtfG1cXJhN2PmEIQ6TaXHcJ5mPLmvzJkM4ZPbRwciJoMoC7ODUQ0qovpswNoVLVy7WAy1Quw1c4_iREOgsIHmlt79Wcuh8mEgVceBGx8q8quxgg2zyN2Gwd24TfpyirTqnHyW83ojpVCmwG5eXsxiOl3E4UOalAvAdgsyuTD0G3iTi4zNtenJaOFDw14E2sLHTrDZTadYtRtxXu_IKQz_Y2_cIz97-YNmLlb1E2SQ2s86Xr2gCNmSV0RHup4y_BMeydvw2n6PO13AJGAaItBBz4XHbMEBMUnmJLyI9vU9MUGcMBdQQdUXTButd8eOcHlFSORfHXVIG84IaQHju_KxSmZhwGrAREHCk60tECX04X_Nk5SGQUCsj4InASX=w1306-h902-no" width=500>
 
@@ -75,7 +75,7 @@ app.listen(PORT, () => {
 
 ```
 
-We will return a html page when the server receives a HTTP request from an client.
+We will return a html page when the server receives a HTTP request from a client.
 
 Although we set up to use port **8080** locally but when deploying these codes, App Engine is able to recognize it and change to suitable port such as **80** for http and **443** for https.
 
@@ -119,7 +119,7 @@ You can select your particular region. I chose **us-central**
 
 <img src="./guide-images/create-app-engine-5.png" width=500>
 
-### 3. Enable neccessary apis
+### 3. Enable necessary apis
 
 Click here to [Enable essential apis](https://console.cloud.google.com/flows/enableapi?apiid=compute,books,appengine)
 
@@ -153,12 +153,14 @@ You can imagine that Cloud Shell is simply a terminal in browser. You can use it
 
 On **[Travis](https://travis-ci.com/)**, log in by your Github account.
 
-Travis will list all your respositories. 
+Travis will list all your repositories. 
 
 Note that: Two things required to integrate your repo to Travis
 
 - You **own** this repository, meaning that if you are only the collaborator, you can not link the travis to your project. In this case, you need to ask the owner to help you enable it.
 - An .travis.yml file **has been added already** to your repo in **root folder**. :). Copy all content of .travis.yml [here](https://github.com/bangoc123/google-cloud-for-fun/blob/master/.travis.yml).
+
+
 
 <img src="./guide-images/travis-location.png" width=500>
 
@@ -167,7 +169,7 @@ You can see the screen like this on Travis Dashboard:
 
 <img src="./guide-images/travis-dashboard.png" width=500>
 
-Travis only is triggered when a commit is pushed to Github. At the first time, you may not see any log/buid yet.
+Travis only is triggered when a commit is pushed to Github. At the first time, you may not see any log/build yet.
 
 You can check whether the Travis is triggered or not at tab **Pull History**
 
@@ -186,9 +188,9 @@ In case you don't see anything updated, please try to create a **test commit** a
 
 #### 6.2 Create Google Cloud credentials
 
-These credentials give **Travis** permissons to run some scripts automatically in Cloud Shell.
+These credentials give **Travis** permissions to run some scripts automatically in Cloud Shell.  
 
-These scritps are defined in **.travis.yml** 
+These scripts are defined in **.travis.yml** 
 
 - Create Service Account
   - Go to [Service Account Page](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts?supportedpurview=project&project&folder&organizationId)
@@ -288,7 +290,7 @@ Upload to Cloud Shell by using **Upload File** features.
   git commit -m "Adds encrypted credentials for Travis and updates project name"
   ```
 
-  
+
 
 
 
