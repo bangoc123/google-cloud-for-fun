@@ -157,7 +157,7 @@ Travis will list all your respositories.
 
 Note that: Two things required to integrate your repo to Travis
 
-- You **own** this repository, meaning that if you are only the collborator, you can not link the travis to your project. In this case, you need to ask the owner to help you enable it.
+- You **own** this repository, meaning that if you are only the collaborator, you can not link the travis to your project. In this case, you need to ask the owner to help you enable it.
 - An .travis.yml file **has been added already** to your repo in **root folder**. :)
 
 <img src="./guide-images/travis-location.png" width=500>
@@ -175,6 +175,94 @@ You can check whether the Travis is triggered or not at tab **Pull History**
 
 In case you don't see anything updated, please try to create a **test commit** and push it to Github. :)
 
+
+### 6. Integrate Cloud Shell with Travis
+
+#### 6.1 Install Travis client
+
+```
+  sudo gem install travis
+```
+
+#### 6.2 Create Google Cloud credentials
+
+These credentials give **Travis** permissons to run some scripts automatically in Cloud Shell.
+
+These scritps are defined in **.travis.yml** 
+
+- Create Service Account
+  - Go to [Service Account Page](https://console.cloud.google.com/projectselector2/iam-admin/serviceaccounts?supportedpurview=project&project&folder&organizationId)
+  - Select your project
+  - Create service account
+  - **Step 1**: Name your service account 
+    <img src="./guide-images/service-account-1.png" width=300>
+  - Step 2: Create roles for your account
+    - Find and Select **App Engine Admin**. This role enables Travis to have full access to our App Engine.
+    - Find and Select **Storage Admin**. This gives Travis full control of GCS resources.
+    - Find and Select **Cloud Build Editor**. This allows Travis to run some scripts like **gcloud scripts** or libraries installations.
+    <img src="./guide-images/service-account-2.png" width=300>
+
+  - **Step 3**: Create Key > Json > Create. A Jason file will be downloaded automatically into your computer.
+
+#### 6.3 Upload file to the project in Cloud Shell
+
+Upload to Cloud Shell by using **Upload File** features.
+
+  <img src="./guide-images/service-account-3.png" width=500>
+
+  <img src="./guide-images/service-account-4.png" width=500>
+
+  Note that the file you upload will be placed in **/home/your-account-name**. Therefore, you need to move it to the cloned project.
+
+  ```
+  mv ~/<your_credentials_filename>.json ~/google-cloud-for-fun/infrastructures/travis-ci-nodejs/client-secret.json
+  ```
+
+  Make sure everything will look like this:
+
+  <img src="./guide-images/service-account-5.png" width=400>
+
+#### 6.4 Create the Books API Key
+
+  - Go to [APIs Credentials](https://console.cloud.google.com/apis/credentials)
+
+  - Create API Key
+
+  <img src="./guide-images/service-account-6.png" width=400>
+  
+  - Create  **api_key** file in Cloud Shell
+
+  ```
+  export API_KEY=[YOUR_API_KEY]
+  cd ~/google-cloud-for-fun/infrastructures/travis-ci-nodejs
+  echo "key = '${API_KEY}'" > api_key.py
+  ```
+  <img src="./guide-images/service-account-7.png" width=400>
+
+#### 6.5 Encrypt credentials for Travis
+
+- We will combine **client-secret.json** and **api_key** into a single file **credentials.tar.gz** by using the script:
+
+  ```
+  tar -czf credentials.tar.gz client-secret.json api_key.py
+  ```
+- Login to Travis CI
+
+  ```
+  travis login --pro
+  ```
+  You will use the Github Account to login into **Travis**
+
+  <img src="./guide-images/travis-login.png" width=400>
+  
+- We need to encrypt this file for public usage
+
+  Use this command:
+  ```
+  travis encrypt-file credentials.tar.gz --pro
+  ```
+  
+  <img src="./guide-images/encrypt-credentials.png" width=400>
 
 
 
